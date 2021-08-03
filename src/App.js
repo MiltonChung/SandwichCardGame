@@ -48,11 +48,6 @@ const App = () => {
 	};
 
 	useEffect(() => {
-		// nw5ebl2bvv5l
-		// https://deckofcardsapi.com/api/deck/<<deck_id>>/pile/<<pile_name>>/list/
-		// https://deckofcardsapi.com/api/deck/<<deck_id>>/pile/<<pile_name>>/add/?cards=AS,2S
-		// https://deckofcardsapi.com/api/deck/<<deck_id>>/draw/?count=2
-		// https://deckofcardsapi.com/api/deck/<<deck_id>>/shuffle/
 		getDeckInfo();
 	}, [getDeckInfo]);
 
@@ -72,7 +67,7 @@ const App = () => {
 				piles={piles}
 				setPiles={setPiles}
 			/>
-			<PlayingField playingField={playingField} turn={turn} setTurn={setTurn} />
+			<PlayingField playingField={playingField} />
 			<Player
 				playingField={playingField}
 				setPlayingField={setPlayingField}

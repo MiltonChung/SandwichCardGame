@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 const Player = ({ deckInfo, playingField, setPlayingField, playerNo, turn, setWinner, piles, setPiles }) => {
 	useEffect(() => {
@@ -33,14 +33,7 @@ const Player = ({ deckInfo, playingField, setPlayingField, playerNo, turn, setWi
 		);
 		const pile = await pileRes.json();
 		setPiles(pile);
-		console.log(pile);
 	};
-
-	// nw5ebl2bvv5l
-	// https://deckofcardsapi.com/api/deck/<<deck_id>>/pile/<<pile_name>>/list/
-	// https://deckofcardsapi.com/api/deck/<<deck_id>>/pile/<<pile_name>>/add/?cards=AS,2S
-	// https://deckofcardsapi.com/api/deck/<<deck_id>>/draw/?count=2
-	// https://deckofcardsapi.com/api/deck/<<deck_id>>/shuffle/
 
 	return (
 		<div className="player">
