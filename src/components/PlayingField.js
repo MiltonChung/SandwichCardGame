@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Card from "./Card";
 
-const PlayingField = playingField => {
+const PlayingField = ({ playingField }) => {
 	return (
-		<div>
-			<h2>playing field</h2>
-			{console.log(playingField.playingField)}
-			{playingField.playingField.length >= 1 &&
-				playingField.playingField?.map(card => {
-					return <img src={card.images.svg} alt="" />;
+		<div className="playing-field">
+			{playingField.length >= 1 &&
+				playingField?.map(card => {
+					return <Card key={card.code} imgSrc={card.image} code={card.code} />;
 				})}
 		</div>
 	);
