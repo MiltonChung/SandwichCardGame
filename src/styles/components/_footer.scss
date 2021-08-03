@@ -1,0 +1,30 @@
+footer {
+	display: flex;
+	flex-direction: column;
+	background-color: rgb(37, 37, 37);
+	color: white;
+	justify-content: center;
+	align-items: center;
+	padding: 1.5rem 0;
+	h2 {
+		font-size: 18px;
+		margin-bottom: 1rem;
+		a {
+			color: white;
+		}
+	}
+	.social-media {
+		display: flex;
+		align-items: center;
+		a {
+			margin: 0.1rem 0.25rem;
+			img {
+				width: 25px;
+				height: 25px;
+			}
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+	}
+}

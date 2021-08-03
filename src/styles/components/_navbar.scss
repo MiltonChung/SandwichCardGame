@@ -1,0 +1,27 @@
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 3rem;
+	background: $primary;
+	a.logo {
+		font-size: 31px;
+	}
+	ul {
+		list-style-type: none;
+
+		li a {
+			background: $secondary;
+			padding: 0.6rem 1rem;
+			border-radius: 2px;
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+	}
+
+	a {
+		color: white;
+		text-decoration: none;
+	}
+}

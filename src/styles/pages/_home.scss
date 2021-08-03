@@ -1,0 +1,37 @@
+.home {
+	height: 100%;
+	background: radial-gradient(rgba(0, 0, 0, 0.336), rgba(13, 12, 78, 0.712)),
+		url("../../assets/landing.jpg") no-repeat center;
+	background-size: cover;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	&-content {
+		background: rgba(0, 0, 0, 0.336);
+		padding: 1rem 1.8rem 2rem 1.8rem;
+
+		h1,
+		h2 {
+			color: white;
+			margin-bottom: 1.4rem;
+			text-shadow: 2px 2px 2px black;
+		}
+		h2 {
+			font-weight: 400;
+		}
+		a {
+			color: white;
+			background: $secondary;
+			text-decoration: none;
+			padding: 0.5rem 1rem;
+			font-size: 20px;
+			border-radius: 2px;
+			&:hover {
+				opacity: 0.9;
+			}
+		}
+	}
+}
