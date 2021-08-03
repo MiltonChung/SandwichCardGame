@@ -18,13 +18,13 @@ const Player = ({
 				playingFieldLen >= 3 &&
 				playingField[playingFieldLen - 3].value === playingField[playingFieldLen - 1].value
 			) {
-				setWinner(`Player${playerNo} is the winner!`);
+				setWinner(`Sandwich! Player${playerNo} is the winner!`);
 			}
 			if (
 				playingFieldLen >= 2 &&
 				playingField[playingFieldLen - 2].value === playingField[playingFieldLen - 1].value
 			) {
-				setWinner(`Player${playerNo} is the winner!`);
+				setWinner(`Double! Player${playerNo} is the winner!`);
 			}
 		}
 	}, [playingField]);
