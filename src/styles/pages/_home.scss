@@ -1,6 +1,6 @@
 .home {
 	height: 100%;
-	background: radial-gradient(rgba(0, 0, 0, 0.336), rgba(13, 12, 78, 0.712)),
+	background: radial-gradient(rgba(0, 0, 0, 0.336), #9e252536),
 		url("../../assets/landing.jpg") no-repeat center;
 	background-size: cover;
 
@@ -10,7 +10,11 @@
 	align-items: center;
 
 	&-content {
-		background: rgba(0, 0, 0, 0.336);
+		background: rgba(0, 0, 0, 0.664);
+		backdrop-filter: blur(6px);
+		-webkit-backdrop-filter: blur(6px);
+		border: 1px solid rgba(255, 255, 255, 0.18);
+		box-shadow: 0 8px 32px 0 #9e252536;
 		padding: 1rem 1.8rem 2rem 1.8rem;
 
 		h1,

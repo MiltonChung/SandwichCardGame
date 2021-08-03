@@ -18,35 +18,37 @@ const Player = ({
 				playingFieldLen >= 3 &&
 				playingField[playingFieldLen - 3].value === playingField[playingFieldLen - 1].value
 			) {
-				console.log(`Player ${playerNo} wins!`);
-				setWinner(`Winner is Player${playerNo}!`);
+				setWinner(`Player${playerNo} is the winner!`);
 			}
 			if (
 				playingFieldLen >= 2 &&
 				playingField[playingFieldLen - 2].value === playingField[playingFieldLen - 1].value
 			) {
-				console.log(`Player ${playerNo} wins!`);
-				setWinner(`Winner is Player${playerNo}!`);
+				setWinner(`Player${playerNo} is the winner!`);
 			}
 		}
 	}, [playingField]);
 
 	const drawCard = async () => {
-		const drawFromPileRes = await fetch(
-			`https://deckofcardsapi.com/api/deck/${deckInfo.deck_id}/pile/player${playerNo}/draw/?count=1`
-		);
-		const drawFromPile = await drawFromPileRes.json();
-		if (drawFromPile.success) {
-			await setPlayingField([...playingField, drawFromPile.cards[0]]);
-		} else {
-			setWinner("Draw! No more cards.");
-		}
+		try {
+			const drawFromPileRes = await fetch(
+				`https://deckofcardsapi.com/api/deck/${deckInfo.deck_id}/pile/player${playerNo}/draw/?count=1`
+			);
+			const drawFromPile = await drawFromPileRes.json();
+			if (drawFromPile.success) {
+				await setPlayingField([...playingField, drawFromPile.cards[0]]);
+			} else {
+				setWinner("Draw! No more cards.");
+			}
 
-		const pileRes = await fetch(
-			`https://deckofcardsapi.com/api/deck/${deckInfo.deck_id}/pile/player${playerNo}/list/`
-		);
-		const pile = await pileRes.json();
-		setPiles(pile);
+			const pileRes = await fetch(
+				`https://deckofcardsapi.com/api/deck/${deckInfo.deck_id}/pile/player${playerNo}/list/`
+			);
+			const pile = await pileRes.json();
+			setPiles(pile);
+		} catch (err) {
+			console.error(err);
+		}
 	};
 
 	return (

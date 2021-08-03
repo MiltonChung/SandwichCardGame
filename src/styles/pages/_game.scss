@@ -53,4 +53,14 @@
 			opacity: 0.9;
 		}
 	}
+
+	@media (max-width: 768px) {
+		padding: 1rem;
+
+		.pop-up {
+			width: 50%;
+			height: 12%;
+			font-size: 20px;
+		}
+	}
 }

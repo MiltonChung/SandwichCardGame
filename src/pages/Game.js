@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Player from "../components/Player";
 import PlayingField from "../components/PlayingField";
 
+// https://deckofcardsapi.com/
 const Game = () => {
 	const [deckInfo, setDeckInfo] = useState([]);
 	const [playingField, setPlayingField] = useState([]);
@@ -23,28 +24,36 @@ const Game = () => {
 	};
 
 	const getDeckInfo = useCallback(async () => {
-		const deckRes = await fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1");
-		const deckData = await deckRes.json();
-		await setDeckInfo(deckData);
-		for (let i = 1; i <= 2; i++) {
-			await addPlayer(deckData, i);
+		try {
+			const deckRes = await fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1");
+			const deckData = await deckRes.json();
+			setDeckInfo(deckData);
+			for (let i = 1; i <= 2; i++) {
+				await addPlayer(deckData, i);
+			}
+		} catch (err) {
+			console.error(err);
 		}
 	}, []);
 
 	const addPlayer = async (deckData, index) => {
-		const drawnCardsRes = await fetch(
-			`https://deckofcardsapi.com/api/deck/${deckData.deck_id}/draw/?count=${deckData.remaining / 2}`
-		);
-		const drawnCards = await drawnCardsRes.json();
-		let pileOneCards = drawnCards.cards.map(card => {
-			return card.code;
-		});
+		try {
+			const drawnCardsRes = await fetch(
+				`https://deckofcardsapi.com/api/deck/${deckData.deck_id}/draw/?count=${deckData.remaining / 2}`
+			);
+			const drawnCards = await drawnCardsRes.json();
+			let pileOneCards = drawnCards.cards.map(card => {
+				return card.code;
+			});
 
-		await fetch(
-			`https://deckofcardsapi.com/api/deck//${
-				deckData.deck_id
-			}/pile/player${index}/add/?cards=${pileOneCards.join(",")}`
-		);
+			await fetch(
+				`https://deckofcardsapi.com/api/deck//${
+					deckData.deck_id
+				}/pile/player${index}/add/?cards=${pileOneCards.join(",")}`
+			);
+		} catch (err) {
+			console.error(err);
+		}
 	};
 
 	useEffect(() => {

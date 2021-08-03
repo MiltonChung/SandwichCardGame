@@ -4,11 +4,13 @@ import Home from "./pages/Home";
 import Game from "./pages/Game";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
 	return (
 		<div className="App">
 			<Navbar />
+			<ScrollToTop />
 			<Switch>
 				<Route path="/play">
 					<Game />
